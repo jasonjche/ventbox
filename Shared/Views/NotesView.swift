@@ -17,18 +17,22 @@ struct NotesView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
-                        .padding(.bottom)
-                    Text(item.notes)
-                        .font(.body)
-                        .multilineTextAlignment(.leading)
+                        .padding(.all)
+                    HStack {
+                        Text(item.notes)
+                            .font(.body)
+                            .multilineTextAlignment(.leading)
+                    }
                     Spacer()
                     HStack{
+                        Spacer()
                         Button {
                             shareNote(title: item.title, notes: item.notes)
                         } label: {
                             Image(systemName: "square.and.arrow.up")
                         }
                         .padding(.all)
+                        .font(.title)
                         Spacer()
                         Button {
                             model.deleteData(delete: item)
@@ -36,21 +40,24 @@ struct NotesView: View {
                             Image(systemName: "trash")
                         }
                         .padding(.all)
-                    }
-                } }label: {
-                    VStack(alignment:.leading){
-                        Text(item.title).font(.headline)
-                        Text(item.notes).font(.subheadline).foregroundColor(Color.gray)
+                        .font(.title)
+                        Spacer()
                     }
                 }
+            } label: {
+                VStack(alignment:.leading){
+                    Text(item.title).font(.headline)
+                    Text(item.notes).font(.subheadline).foregroundColor(Color.gray)
+                }
+            }
         }
     }
     
     func shareNote(title: String, notes: String){
         let shareString = title + "\n\n" + notes
-        let av = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+        let av = UIActivityViewController(activityItems: [shareString],
+                                          applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
-        
     }
     
     init(){

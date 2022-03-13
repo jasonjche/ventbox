@@ -1,4 +1,3 @@
-//
 //  ContentView.swift
 //  Shared
 //
@@ -12,15 +11,23 @@ struct ContentView: View {
         NavigationView{
             VStack{
                 NotesView()
-                CreateView()
+                HStack{
+                    Spacer()
+                    NavigationLink {
+                        CreateView()
+                    } label:{
+                        Image(systemName: "square.and.pencil")
+                            .font(.title)
+                            .foregroundColor(Color(UIColor.systemBlue))
+                            .padding(.top, 10.0)
+                            .padding(.trailing, 50.0)
+                    }
                     .navigationBarTitle(Text("Vents"))
+                }
             }
         }
     }
 }
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

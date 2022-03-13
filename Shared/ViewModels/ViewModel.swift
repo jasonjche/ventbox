@@ -1,4 +1,3 @@
-//
 //  ViewModel.swift
 //  VentBox
 //

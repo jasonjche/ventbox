@@ -1,4 +1,4 @@
-# ventbox
+# Ventbox
 
 Social venting app
 
